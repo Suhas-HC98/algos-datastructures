@@ -26,3 +26,9 @@ profile:
   username: suhas
   password: suhas
   role: ADMIN
+
+com:
+  shared:
+    info:
+      url:
+        greet-service: http://localhost:8443

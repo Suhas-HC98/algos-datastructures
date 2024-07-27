@@ -17,10 +17,10 @@ class CsvServiceImplTest {
 
     @Test
     void should_parse_csv_file_and_return_the_content_when_file_nane_is_passed() throws Exception {
-        InputStream in = TypeReference.class.getResourceAsStream("/data/files/MOCK_DATA_TEST.csv");
+        var inputStream = TypeReference.class.getResourceAsStream("/data/files/MOCK_DATA_TEST.csv");
 
-        MockMultipartFile multipartFile = new MockMultipartFile("test", in);
-        Collection<?> actualResponse = service.readCSVFileContent(multipartFile, "ipdata");
+        var file = new MockMultipartFile("test", inputStream);
+        var actualResponse = service.readCSVFileContent(file, "ipdata");
 
         assertFalse(actualResponse.isEmpty());
         assertEquals(10, actualResponse.size());

@@ -12,8 +12,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -33,9 +31,9 @@ class ArrayManipulationsTest {
     void sumOfTwoIsTargetArray() {
         int[] inputArray = {2, 4, 3, 1, 6};
         int target = 7;
-        List<Integer> expectedResult = Arrays.asList(1, 2);
+        var expectedResult = Arrays.asList(1, 2);
 
-        List<Integer> response = arrayManipulations.sumOfTwoIsTarget(inputArray, target);
+        var response = arrayManipulations.sumOfTwoIsTarget(inputArray, target);
         assertEquals(expectedResult, response);
     }
 
@@ -44,9 +42,9 @@ class ArrayManipulationsTest {
     void sumOfThreeIsTargetArray() {
         int[] inputArray = {2, 4, 1, 3, 1, 2, 4, 1, 1, 3, 2};
         int target = 7;
-        List<Integer> expectedResult = Arrays.asList(2, 4, 1);
+        var expectedResult = Arrays.asList(2, 4, 1);
 
-        List<List<Integer>> response = arrayManipulations.sumOfThreeIsTarget(inputArray, target);
+        var response = arrayManipulations.sumOfThreeIsTarget(inputArray, target);
         assertEquals(expectedResult, response.get(0));
     }
 
@@ -54,7 +52,7 @@ class ArrayManipulationsTest {
     @DisplayName("Smallest numbers whose digits product to give actual number")
     void smallestNumberForProduct() {
         int number = 1000;
-        Integer response = arrayManipulations.smallestNumberForActualProduct(number);
+        var response = arrayManipulations.smallestNumberForActualProduct(number);
         assertEquals(5558, response);
     }
 
@@ -65,13 +63,13 @@ class ArrayManipulationsTest {
                 {3, 1, 2, 7},
                 {4, 1, 1, 3},
                 {5, 9, 8, 0}};
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        var outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
         arrayManipulations.printSpherically(inputArray);
 
-        String expectedOutput = "2 4 1 3 7 3 0 8 9 5 4 3 1 2 1 1";
-        String actualOutput = outContent.toString().replaceAll("\\r\\n|\\r|\\n", " ").trim();
+        var expectedOutput = "2 4 1 3 7 3 0 8 9 5 4 3 1 2 1 1";
+        var actualOutput = outContent.toString().replaceAll("\\r\\n|\\r|\\n", " ").trim();
         assertEquals(expectedOutput, actualOutput);
     }
 
@@ -86,14 +84,14 @@ class ArrayManipulationsTest {
     @Test
     @DisplayName("Extracting digits starting with 2 from the array")
     void extractNumberFromArray() {
-        List<Integer> response = arrayManipulations.extractArrayElementsSpecifically(array());
+        var response = arrayManipulations.extractArrayElementsSpecifically(array());
         assertEquals(2, response.get(0));
     }
 
     @Test
     @DisplayName("Checks the occurrences of array elements")
     void checkOccurrences() {
-        Map<Integer, Integer> response = arrayManipulations.checkOccurrences(array());
+        var response = arrayManipulations.checkOccurrences(array());
         assertEquals(2, response.get(4));
     }
 
@@ -101,7 +99,6 @@ class ArrayManipulationsTest {
     @DisplayName("Checks average of array elements")
     void avg() {
         int response = arrayManipulations.averageOfArray(array());
-
         assertEquals(4, response);
     }
 
@@ -156,7 +153,7 @@ class ArrayManipulationsTest {
     @Test
     @DisplayName("Frequency of array element")
     void frequency() {
-        Map<Integer, Integer> response = arrayManipulations.frequencyOfArrayElements(array());
+        var response = arrayManipulations.frequencyOfArrayElements(array());
         assertEquals(2, response.get(4));
     }
 

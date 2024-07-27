@@ -10,8 +10,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.List;
-
 import static java.util.Objects.isNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -24,7 +22,7 @@ class IntegerManipulationTest {
 
     @Test
     void printSquareRootsTill() {
-        List<Integer> response =
+        var response =
                 integerManipulation.printSquareRootsTill(20);
 
         assertEquals(16, response.get(response.size() - 1));

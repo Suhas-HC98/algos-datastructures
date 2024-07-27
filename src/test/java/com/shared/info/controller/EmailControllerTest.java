@@ -2,9 +2,9 @@ package com.shared.info.controller;
 
 import com.shared.info.dto.Mail;
 import com.shared.info.service.EmailService;
+import jakarta.mail.MessagingException;
 import org.junit.jupiter.api.Test;
 
-import javax.mail.MessagingException;
 import java.util.List;
 
 import static org.mockito.Mockito.*;

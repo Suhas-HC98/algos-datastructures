@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.15</version>
+        <version>3.3.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -18,17 +18,22 @@
 
     <properties>
         <java.version>17</java.version>
-        <cucumber.version>7.10.0</cucumber.version>
-        <springdoc-open-api-ui.version>1.7.0</springdoc-open-api-ui.version>
-        <net.sf.jasperreports.version>6.20.6</net.sf.jasperreports.version>
-        <org.apache.commons.version>1.10.0</org.apache.commons.version>
+        <cucumber.version>7.18.1</cucumber.version>
+        <springdoc-open-api-ui.version>1.8.0</springdoc-open-api-ui.version>
+        <net.sf.jasperreports.version>7.0.0</net.sf.jasperreports.version>
+        <org.apache.commons.version>1.11.0</org.apache.commons.version>
         <io.jsonwebtoken.version>0.11.1</io.jsonwebtoken.version>
-        <net.sourceforge.tess4j.version>5.8.0</net.sourceforge.tess4j.version>
-        <com.github.librepdf.version>1.3.30</com.github.librepdf.version>
+        <net.sourceforge.tess4j.version>5.12.0</net.sourceforge.tess4j.version>
+        <com.github.librepdf.version>2.0.2</com.github.librepdf.version>
         <net.sourceforge.javacsv.version>2.0</net.sourceforge.javacsv.version>
-        <org.apache.poi.version>5.2.3</org.apache.poi.version>
-        <org.jacoco.verison>0.8.10</org.jacoco.verison>
-        <spring-cloud-dependencies.version>2022.0.4</spring-cloud-dependencies.version>
+        <org.apache.poi.version>5.3.0</org.apache.poi.version>
+        <org.jacoco.verison>0.8.12</org.jacoco.verison>
+        <org.mapstruct.version>1.6.0.RC1</org.mapstruct.version>
+        <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
+        <org.projectlombok.version>1.18.34</org.projectlombok.version>
+        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
+        <javax.mail.version>1.6.2</javax.mail.version>
+        <jaxb-api.version>2.3.1</jaxb-api.version>
     </properties>
 
     <dependencies>
@@ -51,6 +56,12 @@
             <groupId>net.sf.jasperreports</groupId>
             <artifactId>jasperreports</artifactId>
             <version>${net.sf.jasperreports.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-collections</groupId>
+                    <artifactId>commons-collections</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -73,6 +84,18 @@
             <version>${com.github.librepdf.version}</version>
         </dependency>
         <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>${javax.mail.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>net.sourceforge.tess4j</groupId>
             <artifactId>tess4j</artifactId>
             <version>${net.sourceforge.tess4j.version}</version>
@@ -84,11 +107,12 @@
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
-            <version>2.3.1</version>
+            <version>${jaxb-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>${org.projectlombok.version}</version>
         </dependency>
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
@@ -111,6 +135,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-jcl</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
@@ -144,6 +174,19 @@
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-graphql</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${org.mapstruct.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
             <version>4.0.4</version>
@@ -174,6 +217,27 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${org.mapstruct.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${org.projectlombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
             </plugin>
         </plugins>
         <finalName>shared-services</finalName>

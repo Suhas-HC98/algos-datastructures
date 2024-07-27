@@ -22,7 +22,7 @@ class UserServiceTest {
     void should_return_accurate_signma_code_when_segment_and_sub_segment_are_passed(ClientDetails clientDetails, String expectedResultString) {
         when(clientService.getClientDetails("123")).thenReturn(clientDetails);
 
-        String sigmaCode = userService.getSigmaCode("123");
+        var sigmaCode = userService.getSigmaCode("123");
         assertEquals(expectedResultString, sigmaCode);
         verify(clientService).getClientDetails("123");
     }

@@ -7,8 +7,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -63,21 +61,21 @@ class StringManipulationsTest {
     @Test
     @DisplayName("Reverse a string")
     void reverse() {
-        String response = stringManipulations.reverse("mindset");
+        var response = stringManipulations.reverse("mindset");
         assertEquals("tesdnim", response);
     }
 
     @Test
     @DisplayName("Convert String to Upper case")
     void upperCaseConversion() {
-        String response = stringManipulations.upperCaseStringConversion("mindSet");
+        var response = stringManipulations.upperCaseStringConversion("mindSet");
         assertEquals("MINDSET", response);
     }
 
     @Test
     @DisplayName("Convert String to Lower case")
     void lowerCaseConversion() {
-        String response = stringManipulations.lowerCaseStringConversion("MIndSET");
+        var response = stringManipulations.lowerCaseStringConversion("MIndSET");
         assertEquals("mindset", response);
     }
 
@@ -112,7 +110,7 @@ class StringManipulationsTest {
     @Test
     @DisplayName("Replace character occurrences with given character")
     void replaceOccurrences() {
-        String response = stringManipulations.replaceCharacter("boat", 'b', 'g');
+        var response = stringManipulations.replaceCharacter("boat", 'b', 'g');
         assertEquals("goat", response);
     }
 
@@ -126,70 +124,70 @@ class StringManipulationsTest {
     @Test
     @DisplayName("Removes vowels from string")
     void removeVowels() {
-        String response = stringManipulations.removeVowels("boat is floating");
+        var response = stringManipulations.removeVowels("boat is floating");
         assertEquals("bt s fltng", response);
     }
 
     @Test
     @DisplayName("Removes consonants from string")
     void removeConsonants() {
-        String response = stringManipulations.removeConsonants("boat is floating");
+        var response = stringManipulations.removeConsonants("boat is floating");
         assertEquals("oa i oai", response);
     }
 
     @Test
     @DisplayName("Removes special from string")
     void removeSpecialCharacter() {
-        String response = stringManipulations.removeSpecialCharacters("b@at i$ f%oat*ng");
+        var response = stringManipulations.removeSpecialCharacters("b@at i$ f%oat*ng");
         assertEquals("batifoatng", response);
     }
 
     @Test
     @DisplayName("Removes digits from string")
     void removeDigitsFromString() {
-        String response = stringManipulations.removeDigits("There are 15 boats floating new 7 harbours");
+        var response = stringManipulations.removeDigits("There are 15 boats floating new 7 harbours");
         assertEquals("There are  boats floating new  harbours", response);
     }
 
     @Test
     @DisplayName("Check for longest word in a string")
     void checkLongestWord() {
-        String response = stringManipulations.checkLongestWord("There are 15 boats floating");
+        var response = stringManipulations.checkLongestWord("There are 15 boats floating");
         assertEquals("floating", response);
     }
 
     @Test
     @DisplayName("Check for shortest word in a string")
     void checkShortestWord() {
-        String response = stringManipulations.checkShortestWord("Hi there!");
+        var response = stringManipulations.checkShortestWord("Hi there!");
         assertEquals("Hi", response);
     }
 
     @Test
     @DisplayName("Check frequency of given character")
     void checkFrequencyOfCharacter() {
-        Integer response = stringManipulations.frequencyOfCharacters("Hi there!", 'e');
+        var response = stringManipulations.frequencyOfCharacters("Hi there!", 'e');
         assertEquals(2, response);
     }
 
     @Test
     @DisplayName("Split the given string at whitespace")
     void splitString() {
-        List<String> response = stringManipulations.splitString("Hi there!");
+        var response = stringManipulations.splitString("Hi there!");
         assertEquals("Hithere!", response.get(0).concat(response.get(1)));
     }
 
     @Test
     @DisplayName("Remove given character from a string")
     void removeCharacter() {
-        String response = stringManipulations.removeGivenCharacter("Hi there!", 'e');
+        var response = stringManipulations.removeGivenCharacter("Hi there!", 'e');
         assertEquals("hi thr!", response);
     }
 
     @Test
     @DisplayName("Remove given word from a string")
     void removeWord() {
-        String response = stringManipulations.removeGivenWord("Hi there!", "there!");
+        var response = stringManipulations.removeGivenWord("Hi there!", "there!");
         assertEquals("Hi", response.trim());
     }
 }

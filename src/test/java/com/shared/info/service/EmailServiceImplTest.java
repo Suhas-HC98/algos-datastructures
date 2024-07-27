@@ -3,6 +3,7 @@ package com.shared.info.service;
 import com.shared.info.dto.Mail;
 import com.shared.info.service.impl.EmailServiceImpl;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mock.web.MockMultipartFile;
@@ -12,7 +13,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
+import static java.util.Objects.requireNonNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -23,9 +27,15 @@ class EmailServiceImplTest {
 
     @Test
     void sendEmail() throws IOException {
+        var messageArgumentCaptor = ArgumentCaptor.forClass(SimpleMailMessage.class);
         doNothing().when(mailSender).send(any(SimpleMailMessage.class));
+
         service.sendEmailWithoutAttachment(mail());
-        verify(mailSender).send(any(SimpleMailMessage.class));
+
+        verify(mailSender).send(messageArgumentCaptor.capture());
+        assertEquals(mail().from(), messageArgumentCaptor.getValue().getFrom());
+        assertEquals(mail().subject(), messageArgumentCaptor.getValue().getSubject());
+        assertEquals(mail().recipients().get(0), requireNonNull(messageArgumentCaptor.getValue().getTo())[0]);
     }
 
     private Mail mail() throws IOException {

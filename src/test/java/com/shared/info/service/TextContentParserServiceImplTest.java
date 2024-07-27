@@ -4,8 +4,6 @@ import com.shared.info.dto.InternetProtocol;
 import com.shared.info.service.impl.TextContentParserServiceImpl;
 import org.junit.jupiter.api.Test;
 
-import java.util.Collection;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -20,7 +18,7 @@ class TextContentParserServiceImplTest {
 
     @Test
     void should_return_class_fields_when_class_name_is_passed() {
-        Collection<?> actualResponse = service.getClassFieldsAsString(InternetProtocol.class);
+        var actualResponse = service.getClassFieldsAsString(InternetProtocol.class);
         assertFalse(actualResponse.isEmpty());
     }
 

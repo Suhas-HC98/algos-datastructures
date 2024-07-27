@@ -2,6 +2,8 @@ package com.shared.info.service.impl;
 
 import com.shared.info.dto.Mail;
 import com.shared.info.service.EmailService;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.SimpleMailMessage;
@@ -9,8 +11,6 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
 import java.time.LocalDateTime;
 
 @Slf4j
@@ -29,7 +29,7 @@ public class EmailServiceImpl implements EmailService {
         mailMessage.setText(mail.message());
 
         mailSender.send(mailMessage);
-        log.info("Email sent successfully at {}", LocalDateTime.now());
+        log.info("Email sent successfully without attachment at {}", LocalDateTime.now());
     }
 
     @Override
@@ -44,6 +44,6 @@ public class EmailServiceImpl implements EmailService {
         messageHelper.addAttachment(mail.file().getOriginalFilename(), mail.file());
 
         mailSender.send(message);
-        log.info("Email sent successfully at {}", LocalDateTime.now());
+        log.info("Email sent successfully with attachment at {}", LocalDateTime.now());
     }
 }

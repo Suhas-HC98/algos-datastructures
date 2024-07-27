@@ -3,10 +3,9 @@ package com.shared.info.controller;
 import com.shared.info.controller.documentation.EmailControllerDocumentation;
 import com.shared.info.dto.Mail;
 import com.shared.info.service.EmailService;
+import jakarta.mail.MessagingException;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
-import javax.mail.MessagingException;
 
 @RestController
 @RequestMapping(value = "/email")

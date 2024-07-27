@@ -2,7 +2,7 @@ package com.shared.info.cucumber;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 

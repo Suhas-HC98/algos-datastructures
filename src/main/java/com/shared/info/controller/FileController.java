@@ -6,6 +6,7 @@ import com.shared.info.exception.BadRequestException;
 import com.shared.info.service.*;
 import com.shared.info.utils.GenericResponse;
 import com.shared.info.utils.SharedServiceResponseBuilder;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -14,7 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
 import java.util.List;
 

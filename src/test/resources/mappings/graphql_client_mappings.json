@@ -1,0 +1,27 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "/graphql",
+        "bodyPatterns": [
+          {
+            "equalTo": "{\"query\":\"query greet($name: String!) {greet(name: $name)}\",\"variables\":{\"name\":\"John\"}}"
+          }
+        ],
+        "headers": {
+          "Content-Type": {
+            "equalTo": "application/json"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n    \"data\": {\n        \"greet\": \"Hello John\"\n    }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}

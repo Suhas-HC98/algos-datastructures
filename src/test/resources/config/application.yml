@@ -31,5 +31,5 @@ com:
   shared:
     info:
       url:
-        greet-service: http://localhost:8443
-        json-placeholder: http://localhost:8443
+        greet-service: http://localhost:${wiremock.server.port}/graphql
+        json-placeholder: http://localhost:${wiremock.server.port}

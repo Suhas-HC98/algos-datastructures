@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static com.google.common.net.HttpHeaders.AUTHORIZATION;
 import static com.shared.info.vo.TestUtils.BEARER_TOKEN;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static wiremock.com.google.common.net.HttpHeaders.AUTHORIZATION;
 
 @AutoConfigureTest
 class HealthCheckControllerIT {

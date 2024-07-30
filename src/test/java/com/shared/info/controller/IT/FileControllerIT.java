@@ -11,13 +11,13 @@ import org.springframework.test.web.servlet.MvcResult;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import static com.google.common.net.HttpHeaders.AUTHORIZATION;
 import static com.shared.info.vo.TestUtils.BEARER_TOKEN;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.http.MediaType.MULTIPART_FORM_DATA_VALUE;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static wiremock.com.google.common.net.HttpHeaders.AUTHORIZATION;
 
 @AutoConfigureTest
 class FileControllerIT {

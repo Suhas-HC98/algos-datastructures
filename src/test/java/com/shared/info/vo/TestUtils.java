@@ -9,6 +9,8 @@ import java.util.UUID;
 
 public final class TestUtils {
 
+    public static final String BEARER_TOKEN = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdWhhcyIsImlhdCI6MTcyMjMyNTkzOSwiZXhwIjoxNzIyMzQzOTM5fQ.V67XBZp7PLBLnL3xXQb9J0miF8HrpFbgUf0qG6vuYvdPvdcmqDRM-TAFPiZvmH8r-3aLxAYmUWJcyKPcHK2aTA";
+
     public static ClientEntitlement clientEntitlement() {
         return ClientEntitlement.builder().id(UUID.randomUUID().toString()).domicileCountry("CN").build();
     }

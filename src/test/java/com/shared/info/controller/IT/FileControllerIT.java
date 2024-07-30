@@ -1,4 +1,4 @@
-package com.shared.info.controller;
+package com.shared.info.controller.IT;
 
 import com.shared.info.SharedServicesApplication;
 import lombok.extern.slf4j.Slf4j;

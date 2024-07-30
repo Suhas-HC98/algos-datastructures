@@ -1,4 +1,4 @@
-package com.shared.info.controller;
+package com.shared.info.controller.IT;
 
 import com.shared.info.SharedServicesApplication;
 import org.junit.jupiter.api.Test;

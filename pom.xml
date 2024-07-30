@@ -19,7 +19,7 @@
     <properties>
         <java.version>17</java.version>
         <cucumber.version>7.18.1</cucumber.version>
-        <springdoc-open-api-ui.version>1.8.0</springdoc-open-api-ui.version>
+        <springdoc-openapi-starter-webmvc-ui.version>2.6.0</springdoc-openapi-starter-webmvc-ui.version>
         <net.sf.jasperreports.version>7.0.0</net.sf.jasperreports.version>
         <org.apache.commons.version>1.11.0</org.apache.commons.version>
         <io.jsonwebtoken.version>0.11.1</io.jsonwebtoken.version>
@@ -50,8 +50,8 @@
         </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
-            <version>${springdoc-open-api-ui.version}</version>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>${springdoc-openapi-starter-webmvc-ui.version}</version>
         </dependency>
         <dependency>
             <groupId>net.sf.jasperreports</groupId>

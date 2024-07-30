@@ -6,7 +6,7 @@
         "url": "/graphql",
         "bodyPatterns": [
           {
-            "equalTo": "{\"query\":\"query greet($name: String!) {greet(name: $name)}\",\"variables\":{\"name\":\"John\"}}"
+            "equalTo": "{\"query\":\"query greet($name: String!) {greeting:greet(name: $name)}\",\"variables\":{\"name\":\"John\"}}"
           }
         ],
         "headers": {
@@ -17,7 +17,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n    \"data\": {\n        \"greet\": \"Hello John\"\n    }\n}",
+        "body": "{\n    \"data\": {\n        \"greeting\": \"Hello John\"\n    }\n}",
         "headers": {
           "Content-Type": "application/json"
         }

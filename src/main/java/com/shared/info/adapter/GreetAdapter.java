@@ -20,9 +20,9 @@ public class GreetAdapter implements GreetPort {
 
     @Override
     public String greet(String name) {
-        Map<String, String> response = Objects.requireNonNull(graphQlClient.documentName("greet-user")
+        return Objects.requireNonNull(graphQlClient.documentName("greet-user")
                 .variable("name", name)
-                .execute().block()).getData();
-        return nonNull(response.get("greet")) ? response.get("greet") : null;
+                .retrieve("greeting")
+                .toEntity(String.class)).block();
     }
 }

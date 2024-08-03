@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public final class TestUtils {
 
-    public static final String BEARER_TOKEN = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdWhhcyIsImlhdCI6MTcyMjMyNTkzOSwiZXhwIjoxNzIyMzQzOTM5fQ.V67XBZp7PLBLnL3xXQb9J0miF8HrpFbgUf0qG6vuYvdPvdcmqDRM-TAFPiZvmH8r-3aLxAYmUWJcyKPcHK2aTA";
+    public static final String BEARER_TOKEN = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdWhhcyIsImlhdCI6MTcyMjY3Mzc1MywiZXhwIjoxNzIyNjkxNzUzfQ.jDuZ02rmtVSj4gvxClrTX93LAc5b49QzyIZFJ7OO9mAyGmonVerURrdoOTOZAQjvLeVFOX6ABjD9pgOheRtbXw";
 
     public static ClientEntitlement clientEntitlement() {
         return ClientEntitlement.builder().id(UUID.randomUUID().toString()).domicileCountry("CN").build();

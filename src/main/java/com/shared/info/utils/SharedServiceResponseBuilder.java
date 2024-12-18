@@ -1,6 +1,5 @@
 package com.shared.info.utils;
 
-import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -20,14 +19,19 @@ public final class SharedServiceResponseBuilder {
     }
 
     private static MetaData metaData(Object data) {
-        MetaData success = MetaData.builder().time(LocalDateTime.now()).success(true).repsonseId(randomUUID().toString()).build();
-        MetaData failure = MetaData.builder().time(LocalDateTime.now()).success(false).repsonseId(randomUUID().toString()).build();
+        MetaData success = MetaData.builder()
+                .isSuccess(true)
+                .responseId(randomUUID().toString())
+                .build();
+        MetaData failure = MetaData.builder()
+                .isSuccess(false)
+                .responseId(randomUUID().toString())
+                .build();
         if (data instanceof Collection<?>)
             if (nonNull(data) && !((Collection<?>) data).isEmpty()) return success;
             else return failure;
-        else
-            if (nonNull(data)) return success;
-            else return failure;
+        else if (nonNull(data)) return success;
+        else return failure;
     }
 
     private static Errors errors(Object data) {
@@ -36,8 +40,7 @@ public final class SharedServiceResponseBuilder {
         if (data instanceof Collection<?>)
             if (nonNull(data) && !((Collection<?>) data).isEmpty()) return noErrors;
             else return hasErrors;
-        else
-            if (nonNull(data)) return noErrors;
-            else return hasErrors;
+        else if (nonNull(data)) return noErrors;
+        else return hasErrors;
     }
 }

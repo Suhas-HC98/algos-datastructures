@@ -17,6 +17,6 @@ public final class HealthCheckController implements HealthCheckControllerDocumen
 
     @GetMapping(value = "/health-check", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<GenericResponse<?>> healthCheck() {
-        return new ResponseEntity<>(SharedServiceResponseBuilder.wrapWithGenericResponse("Health Check success"), HttpStatus.OK);
+        return new ResponseEntity<>(SharedServiceResponseBuilder.wrapWithGenericResponse("Health Check isSuccess"), HttpStatus.OK);
     }
 }

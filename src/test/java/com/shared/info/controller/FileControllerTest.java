@@ -36,7 +36,7 @@ class FileControllerTest {
 
         assertEquals(HttpStatus.OK, actualResponse.getStatusCode());
         assertNotNull(requireNonNull(actualResponse.getBody()).data());
-        assertTrue(actualResponse.getBody().metaData().success());
+        assertTrue(actualResponse.getBody().metaData().isSuccess());
         verify(textContentParserService).parseTextContent("test");
         verify(jsonContentService, never()).fetchJsonData(InternetProtocol.class, "test");
         verify(csvService, never()).readCSVFileContent(multipartFile("MOCK_DATA_TEST.csv"), "ipdata");
@@ -52,7 +52,7 @@ class FileControllerTest {
         ResponseEntity<GenericResponse<?>> actualResponse = controller.getFileContentAsString("test");
 
         assertEquals(HttpStatus.BAD_REQUEST, actualResponse.getStatusCode());
-        assertFalse(requireNonNull(actualResponse.getBody()).metaData().success());
+        assertFalse(requireNonNull(actualResponse.getBody()).metaData().isSuccess());
         verify(textContentParserService).parseTextContent("test");
         verify(jsonContentService, never()).fetchJsonData(InternetProtocol.class, "test");
         verify(csvService, never()).readCSVFileContent(multipartFile("MOCK_DATA_TEST.csv"), "ipdata");
@@ -67,7 +67,7 @@ class FileControllerTest {
         when(jsonContentService.fetchJsonData(InternetProtocol.class, "test")).thenReturn(Collections.emptyList());
 
         ResponseEntity<GenericResponse<?>> actualResponse = controller.getJsonFromFile("test");
-        log.info("API status : {}", requireNonNull(actualResponse.getBody()).metaData().success());
+        log.info("API status : {}", requireNonNull(actualResponse.getBody()).metaData().isSuccess());
         assertEquals(HttpStatus.OK, actualResponse.getStatusCode());
         assertFalse(requireNonNull(actualResponse.getBody()).errors().isSuccess());
         verify(textContentParserService, never()).parseTextContent("test");
@@ -86,7 +86,7 @@ class FileControllerTest {
 
         assertEquals(HttpStatus.OK, actualResponse.getStatusCode());
         assertNotNull(requireNonNull(actualResponse.getBody()).data());
-        assertFalse(actualResponse.getBody().metaData().success());
+        assertFalse(actualResponse.getBody().metaData().isSuccess());
         verify(textContentParserService, never()).parseTextContent("test");
         verify(jsonContentService, never()).fetchJsonData(InternetProtocol.class, "test");
         verify(csvService).readCSVFileContent(null, "ipdata");

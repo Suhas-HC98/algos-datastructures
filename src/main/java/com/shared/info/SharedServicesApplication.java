@@ -25,6 +25,6 @@ public class SharedServicesApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         SharedServicesApplicationContext sharedAlgoApplicationConfig = applicationContext
                 .getBean(SharedServicesApplicationContext.class);
-        log.info("{}", sharedAlgoApplicationConfig.getApplicationId());
+        log.info("{} is now ready", sharedAlgoApplicationConfig.getApplicationId());
     }
 }

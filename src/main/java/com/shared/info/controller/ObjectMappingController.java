@@ -4,6 +4,7 @@ import com.shared.info.controller.documentation.ObjectMappingControllerDocumenta
 import com.shared.info.pojo.ClientEntitlement;
 import com.shared.info.pojo.CustomerEntitlements;
 import com.shared.info.service.PojoMapperService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +19,7 @@ public final class ObjectMappingController implements ObjectMappingControllerDoc
     private final PojoMapperService service;
 
     @PostMapping(value = "/customer")
-    public CustomerEntitlements clientEntitlementToCustomerEntitlement(@RequestBody ClientEntitlement clientEntitlement) {
+    public CustomerEntitlements clientEntitlementToCustomerEntitlement(@Valid @RequestBody ClientEntitlement clientEntitlement) {
         return service.clientEntitlementToCustomerEntitlement(clientEntitlement);
     }
 

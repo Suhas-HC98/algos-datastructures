@@ -1,6 +1,7 @@
 package com.shared.info.vo;
 
 import com.shared.info.dto.Albums;
+import com.shared.info.dto.Employee;
 import com.shared.info.exception.BadRequestException;
 import com.shared.info.pojo.ClientEntitlement;
 import com.shared.info.pojo.CustomerEntitlements;
@@ -15,7 +16,7 @@ import static java.util.Collections.emptyMap;
 
 public final class TestUtils {
 
-    public static final String BEARER_TOKEN = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdWhhcyIsImlhdCI6MTczNDUwNDA2NywiZXhwIjoxNzM0NTIyMDY3fQ.nRzPuhbUTS9Rz8M0aoWWhXND2klwdi9cJRo7av_crRMkgckDhRYla-dZVOkbTNe6JtyRkDXED24TyY4p4NiX1A";
+    public static final String BEARER_TOKEN = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdWhhcyIsImlhdCI6MTczNDUxMTQ4MCwiZXhwIjoxNzM0NTI5NDgwfQ.YxjMsKmnRQc-G8DrVm19Uy9-CEh3SEQKNP-dcW-f4FFE4Ij6m0FTvNi695ycNLhp4XbNQfpQPYkd-spIsXuBqA";
 
     public static ClientEntitlement clientEntitlement() {
         return ClientEntitlement.builder().id(UUID.randomUUID().toString()).domicileCountry("CN").build();
@@ -52,5 +53,14 @@ public final class TestUtils {
 
     public static BadRequestException badRequestException(){
         return new BadRequestException("please validate the request");
+    }
+
+    public static Employee employee(){
+        return Employee.builder()
+                .empId(123)
+                .empName("John")
+                .empLocation("Canada")
+                .empPhone(123L)
+                .build();
     }
 }

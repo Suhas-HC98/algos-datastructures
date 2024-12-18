@@ -6,11 +6,14 @@ import com.shared.info.pojo.CustomerEntitlements;
 import com.shared.info.service.PojoMapperService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Slf4j
 @RestController
 @RequestMapping(value = "/mapper")
 @AllArgsConstructor
@@ -24,7 +27,11 @@ public final class ObjectMappingController implements ObjectMappingControllerDoc
     }
 
     @PostMapping(value = "/client")
-    public ClientEntitlement customerEntitlementToClientEntitlement(@RequestBody CustomerEntitlements customerEntitlements) {
+    public ClientEntitlement customerEntitlementToClientEntitlement(@Valid @RequestBody CustomerEntitlements customerEntitlements, BindingResult result) {
+        if(result.hasErrors()){
+            log.info("please check your request");
+            return null;
+        }
         return service.customerEntitlementToClientEntitlement(customerEntitlements);
     }
 }

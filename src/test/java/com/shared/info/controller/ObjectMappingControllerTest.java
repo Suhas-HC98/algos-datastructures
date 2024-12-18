@@ -4,6 +4,7 @@ import com.shared.info.pojo.ClientEntitlement;
 import com.shared.info.pojo.CustomerEntitlements;
 import com.shared.info.service.PojoMapperService;
 import org.junit.jupiter.api.Test;
+import org.springframework.validation.BindingResult;
 
 import static com.shared.info.vo.TestUtils.clientEntitlement;
 import static com.shared.info.vo.TestUtils.customerEntitlements;
@@ -19,9 +20,9 @@ class ObjectMappingControllerTest {
     void should_return_client_entitlements_mapped_object_when_customer_entitlement_object_is_passed() {
         var clientEntitlement = clientEntitlement();
         var customerEntitlement = customerEntitlements();
-
+        var bindingResult = mock(BindingResult.class);
         when(service.customerEntitlementToClientEntitlement(customerEntitlement)).thenReturn(clientEntitlement);
-        var response = controller.customerEntitlementToClientEntitlement(customerEntitlement);
+        var response = controller.customerEntitlementToClientEntitlement(customerEntitlement, bindingResult);
         assertThat(response).isInstanceOf(ClientEntitlement.class);
         assertThat(response).isSameAs(clientEntitlement);
         verify(service).customerEntitlementToClientEntitlement(customerEntitlement);

@@ -9,6 +9,7 @@ import feign.FeignException;
 import feign.Request;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
@@ -51,16 +52,22 @@ public final class TestUtils {
                         .build());
     }
 
-    public static BadRequestException badRequestException(){
+    public static BadRequestException badRequestException() {
         return new BadRequestException("please validate the request");
     }
 
-    public static Employee employee(){
+    public static Employee employee() {
         return Employee.builder()
                 .empId(123)
                 .empName("John")
                 .empLocation("Canada")
                 .empPhone(123L)
+                .additionalProperties(additionalEmployeeProperties())
                 .build();
+    }
+
+    public static Map<String, String> additionalEmployeeProperties() {
+        return Map.of("project1", "ADM",
+                "project2", "JVM");
     }
 }

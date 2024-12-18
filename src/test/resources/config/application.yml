@@ -1,3 +1,4 @@
+---
 server:
   port: 8223
   servlet:
@@ -33,5 +34,3 @@ com:
       url:
         greet-service: http://localhost:${wiremock.server.port}/graphql
         json-placeholder: http://localhost:${wiremock.server.port}
-      messages:
-        domicileCountry: domicileCountry must not be null

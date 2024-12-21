@@ -115,7 +115,7 @@ class ArrayManipulationsTest {
     @Test
     @DisplayName("Second smallest array element")
     void secondSmallest() {
-        when(sorting.bubbleSort(any()))
+        when(sorting.bubbleSortAsc(any()))
                 .thenReturn(new int[]{1, 2, 3, 4, 4, 6, 7, 8});
 
         int response = arrayManipulations.secondSmallestElementInArray(array());

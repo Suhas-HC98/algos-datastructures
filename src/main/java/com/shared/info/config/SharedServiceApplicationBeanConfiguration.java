@@ -10,7 +10,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.Clock;
-import java.time.ZoneId;
 
 @Configuration
 public class SharedServiceApplicationBeanConfiguration {
@@ -22,7 +21,7 @@ public class SharedServiceApplicationBeanConfiguration {
 
     @Bean
     public Clock sharedServiceClock() {
-        return Clock.system(ZoneId.of("UTC"));
+        return Clock.systemUTC();
     }
 
     @Bean

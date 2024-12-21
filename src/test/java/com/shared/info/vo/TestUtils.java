@@ -9,7 +9,6 @@ import feign.FeignException;
 import feign.Request;
 
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
@@ -17,7 +16,7 @@ import static java.util.Collections.emptyMap;
 
 public final class TestUtils {
 
-    public static final String BEARER_TOKEN = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdWhhcyIsImlhdCI6MTczNDUxMTQ4MCwiZXhwIjoxNzM0NTI5NDgwfQ.YxjMsKmnRQc-G8DrVm19Uy9-CEh3SEQKNP-dcW-f4FFE4Ij6m0FTvNi695ycNLhp4XbNQfpQPYkd-spIsXuBqA";
+    public static final String BEARER_TOKEN = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdWhhcyIsImlhdCI6MTczNDc2MzYxOSwiZXhwIjoxNzM0NzgxNjE5fQ.5-wEtSbrblqUpINFlI5FfdX85FTUPsNNEnP7mmquMVJ_HJTckQZ5Qpa_kqvrEklylJmPvrCIsmgMqspNFqhmMw";
 
     public static ClientEntitlement clientEntitlement() {
         return ClientEntitlement.builder().id(UUID.randomUUID().toString()).domicileCountry("CN").build();
@@ -62,12 +61,6 @@ public final class TestUtils {
                 .empName("John")
                 .empLocation("Canada")
                 .empPhone(123L)
-                .additionalProperties(additionalEmployeeProperties())
                 .build();
-    }
-
-    public static Map<String, String> additionalEmployeeProperties() {
-        return Map.of("project1", "ADM",
-                "project2", "JVM");
     }
 }

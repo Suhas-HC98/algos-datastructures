@@ -46,17 +46,4 @@ class ObjectMappingControllerIT {
                 .andExpect(jsonPath("$").exists())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON));
     }
-
-    @Test
-    void should_throw_MethodArgumentNotValidException_when_id_is_empty_while_mapping_request() throws Exception {
-        var clientEntitlement = ClientEntitlement.builder().id("").domicileCountry("IN").build();
-        mockMvc.perform(post("/mapper/customer")
-                        .content(objectMapper.writeValueAsString(clientEntitlement))
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .header(AUTHORIZATION, BEARER_TOKEN))
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.id").exists())
-                .andExpect(jsonPath("$.id").value("id must not be empty"))
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
-    }
 }

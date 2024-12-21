@@ -6,7 +6,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import org.springframework.validation.BindingResult;
 
 public interface ObjectMappingControllerDocumentation {
 
@@ -24,5 +23,5 @@ public interface ObjectMappingControllerDocumentation {
             @ApiResponse(responseCode = "401", description = "Unauthorized"),
             @ApiResponse(responseCode = "403", description = "Forbidden"),
             @ApiResponse(responseCode = "500", description = "Internal Server Error")})
-    ClientEntitlement customerEntitlementToClientEntitlement(@Parameter(description = "request payload") CustomerEntitlements customerEntitlements, BindingResult result);
+    ClientEntitlement customerEntitlementToClientEntitlement(@Parameter(description = "request payload") CustomerEntitlements customerEntitlements);
 }

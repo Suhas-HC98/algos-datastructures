@@ -63,4 +63,8 @@ public final class TestUtils {
                 .empPhone(123L)
                 .build();
     }
+
+    public static int[] buildSortableArray(){
+        return new int[]{3, 4, 2, 5, 1};
+    }
 }

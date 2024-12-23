@@ -9,10 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static com.shared.info.vo.TestUtils.BEARER_TOKEN;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static wiremock.com.google.common.net.HttpHeaders.AUTHORIZATION;
 
 @AutoConfigureTest
 class ObjectMappingControllerIT {
@@ -28,8 +26,7 @@ class ObjectMappingControllerIT {
         var clientEntitlement = ClientEntitlement.builder().id("clientId1").domicileCountry("IN").build();
         var resultActions = mockMvc.perform(post("/mapper/customer")
                 .content(objectMapper.writeValueAsString(clientEntitlement))
-                .contentType(MediaType.APPLICATION_JSON)
-                .header(AUTHORIZATION, BEARER_TOKEN));
+                .contentType(MediaType.APPLICATION_JSON));
         resultActions.andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("$").exists())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON));
@@ -40,8 +37,7 @@ class ObjectMappingControllerIT {
         var customerEntitlements = CustomerEntitlements.builder().id("clientId1").domicileCountry("IN").build();
         var resultActions = mockMvc.perform(post("/mapper/client")
                 .content(objectMapper.writeValueAsString(customerEntitlements))
-                .contentType(MediaType.APPLICATION_JSON)
-                .header(AUTHORIZATION, BEARER_TOKEN));
+                .contentType(MediaType.APPLICATION_JSON));
         resultActions.andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("$").exists())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON));

@@ -16,8 +16,6 @@ import static java.util.Collections.emptyMap;
 
 public final class TestUtils {
 
-    public static final String BEARER_TOKEN = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdWhhcyIsImlhdCI6MTczNDc2MzYxOSwiZXhwIjoxNzM0NzgxNjE5fQ.5-wEtSbrblqUpINFlI5FfdX85FTUPsNNEnP7mmquMVJ_HJTckQZ5Qpa_kqvrEklylJmPvrCIsmgMqspNFqhmMw";
-
     public static ClientEntitlement clientEntitlement() {
         return ClientEntitlement.builder().id(UUID.randomUUID().toString()).domicileCountry("CN").build();
     }
@@ -64,7 +62,7 @@ public final class TestUtils {
                 .build();
     }
 
-    public static int[] buildSortableArray(){
+    public static int[] buildSortableArray() {
         return new int[]{3, 4, 2, 5, 1};
     }
 }

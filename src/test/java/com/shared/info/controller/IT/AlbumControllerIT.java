@@ -5,12 +5,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static com.shared.info.vo.TestUtils.BEARER_TOKEN;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static wiremock.com.google.common.net.HttpHeaders.AUTHORIZATION;
 
 @AutoConfigureTest
 class AlbumControllerIT {
@@ -21,7 +19,6 @@ class AlbumControllerIT {
     @Test
     void should_return_all_albums() throws Exception {
         var albumResponse = mockMvc.perform(get("/album/get-all")
-                .header(AUTHORIZATION, BEARER_TOKEN)
                 .contentType(APPLICATION_JSON));
         albumResponse.andExpect(status().is2xxSuccessful());
         albumResponse.andExpect(jsonPath("$.length()").value(1));
@@ -31,7 +28,6 @@ class AlbumControllerIT {
     @Test
     void should_return_specific_albums_when_id_is_passed() throws Exception {
         var albumResponse = mockMvc.perform(get("/album/get/" + 12)
-                .header(AUTHORIZATION, BEARER_TOKEN)
                 .contentType(APPLICATION_JSON));
         albumResponse.andExpect(status().is2xxSuccessful());
         albumResponse.andExpect(jsonPath("$.userId").value("1"));

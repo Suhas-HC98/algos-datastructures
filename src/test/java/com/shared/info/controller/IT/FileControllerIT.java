@@ -11,13 +11,11 @@ import org.springframework.test.web.servlet.MvcResult;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import static com.shared.info.vo.TestUtils.BEARER_TOKEN;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.http.MediaType.MULTIPART_FORM_DATA_VALUE;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static wiremock.com.google.common.net.HttpHeaders.AUTHORIZATION;
 
 @AutoConfigureTest
 class FileControllerIT {
@@ -28,8 +26,7 @@ class FileControllerIT {
     @Test
     void should_parse_text_file_and_return_valid_response_when_file_name_is_passed() throws Exception {
         var actualResponse = mockMvc.perform(get("/file/fetch-content")
-                        .param("fileName", "PDFContent.txt")
-                        .header(AUTHORIZATION, BEARER_TOKEN))
+                        .param("fileName", "PDFContent.txt"))
                 .andExpect(status().isOk())
                 .andReturn();
         assertEquals(HttpStatus.OK.value(), actualResponse.getResponse().getStatus());
@@ -38,8 +35,7 @@ class FileControllerIT {
     @Test
     void should_parse_json_file_and_return_valid_response_when_file_name_is_passed() throws Exception {
         var actualResponse = mockMvc.perform(get("/file/fetch-json")
-                        .param("stringPath", "InternetProtocol")
-                        .header(AUTHORIZATION, BEARER_TOKEN))
+                        .param("stringPath", "InternetProtocol"))
                 .andExpect(status().isOk())
                 .andReturn();
         assertEquals(HttpStatus.OK.value(), actualResponse.getResponse().getStatus());
@@ -48,8 +44,7 @@ class FileControllerIT {
     @Test
     void should_parse_csv_file_and_return_valid_response_when_file_name_is_passed() throws Exception {
         var actualResponse = mockMvc.perform(multipart("/file/read-csv")
-                        .file(csvFile()).param("type", "ipdata")
-                        .header(AUTHORIZATION, BEARER_TOKEN))
+                        .file(csvFile()).param("type", "ipdata"))
                 .andExpect(status().isOk())
                 .andReturn();
         assertEquals(HttpStatus.OK.value(), actualResponse.getResponse().getStatus());
@@ -59,8 +54,7 @@ class FileControllerIT {
     @Test
     void should_generate_csv_file_and_return_valid_response_when_file_name_is_passed() throws Exception {
         var actualResponse = mockMvc.perform(get("/file/produce-csv")
-                        .param("fileName", "test")
-                        .header(AUTHORIZATION, BEARER_TOKEN))
+                        .param("fileName", "test"))
                 .andExpect(status().isOk())
                 .andReturn();
         assertEquals(HttpStatus.OK.value(), actualResponse.getResponse().getStatus());
@@ -69,8 +63,7 @@ class FileControllerIT {
     @Test
     void should_parse_xlsx_file_and_return_valid_response_when_file_name_is_passed() throws Exception {
         MvcResult actualResponse = mockMvc.perform(multipart("/file/read-xlsx")
-                        .file(xlsxFile())
-                        .header(AUTHORIZATION, BEARER_TOKEN))
+                        .file(xlsxFile()))
                 .andExpect(status().isOk())
                 .andReturn();
         assertEquals(HttpStatus.OK.value(), actualResponse.getResponse().getStatus());
@@ -79,8 +72,7 @@ class FileControllerIT {
     @Test
     void should_generate_xlsx_file_and_return_valid_response_when_file_name_is_passed() throws Exception {
         var actualResponse = mockMvc.perform(get("/file/produce-xlsx")
-                        .param("fileName", "test")
-                        .header(AUTHORIZATION, BEARER_TOKEN))
+                        .param("fileName", "test"))
                 .andExpect(status().isOk())
                 .andReturn();
         assertEquals(HttpStatus.OK.value(), actualResponse.getResponse().getStatus());
@@ -89,8 +81,7 @@ class FileControllerIT {
     @Test
     void should_generate_pdf_file_and_return_valid_response_when_file_name_is_passed() throws Exception {
         var actualResponse = mockMvc.perform(get("/file/produce-pdf")
-                        .param("fileName", "test")
-                        .header(AUTHORIZATION, BEARER_TOKEN))
+                        .param("fileName", "test"))
                 .andExpect(status().isOk())
                 .andReturn();
         assertEquals(HttpStatus.OK.value(), actualResponse.getResponse().getStatus());

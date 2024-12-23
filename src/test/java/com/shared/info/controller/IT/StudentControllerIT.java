@@ -12,11 +12,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.Map;
 import java.util.stream.Stream;
 
-import static com.shared.info.vo.TestUtils.BEARER_TOKEN;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static wiremock.com.google.common.net.HttpHeaders.AUTHORIZATION;
 
 @AutoConfigureTest
 class StudentControllerIT {
@@ -28,8 +26,7 @@ class StudentControllerIT {
     @MethodSource("students")
     void should_return_student_details_when_student_id_is_passed(Student student) throws Exception {
         mockMvc.perform(get("/std/" + student.getStdId())
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .header(AUTHORIZATION, BEARER_TOKEN))
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.metaData").exists())
@@ -43,8 +40,7 @@ class StudentControllerIT {
     @MethodSource("students")
     void should_return_student_name_when_student_id_is_passed(Student student) throws Exception {
         mockMvc.perform(get("/std/name/" + student.getStdId())
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .header(AUTHORIZATION, BEARER_TOKEN))
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.metaData").exists())
@@ -59,8 +55,7 @@ class StudentControllerIT {
     @MethodSource("students")
     void should_return_students_additional_properties_when_student_id_is_passed(Student student) throws Exception {
         mockMvc.perform(get("/std/property/" + student.getStdId())
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .header(AUTHORIZATION, BEARER_TOKEN))
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))

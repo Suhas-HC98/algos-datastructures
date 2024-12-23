@@ -6,11 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static com.shared.info.vo.TestUtils.BEARER_TOKEN;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static wiremock.com.google.common.net.HttpHeaders.AUTHORIZATION;
 
 @AutoConfigureTest
 class HealthCheckControllerIT {
@@ -20,8 +18,7 @@ class HealthCheckControllerIT {
 
     @Test
     void should_trigger_health_check_api_and_return_valid_response() throws Exception {
-        var actualResponse = mockMvc.perform(get("/health/health-check")
-                        .header(AUTHORIZATION, BEARER_TOKEN))
+        var actualResponse = mockMvc.perform(get("/health/health-check"))
                 .andExpect(status().isOk())
                 .andReturn();
         assertEquals(HttpStatus.OK.value(), actualResponse.getResponse().getStatus());

@@ -19,7 +19,6 @@ class ObjectMappingControllerTest {
     void should_return_client_entitlements_mapped_object_when_customer_entitlement_object_is_passed() {
         var clientEntitlement = clientEntitlement();
         var customerEntitlement = customerEntitlements();
-
         when(service.customerEntitlementToClientEntitlement(customerEntitlement)).thenReturn(clientEntitlement);
         var response = controller.customerEntitlementToClientEntitlement(customerEntitlement);
         assertThat(response).isInstanceOf(ClientEntitlement.class);
@@ -31,7 +30,6 @@ class ObjectMappingControllerTest {
     void should_return_customer_entitlements_mapped_object_when_client_entitlement_object_is_passed() {
         var clientEntitlement = clientEntitlement();
         var customerEntitlement = customerEntitlements();
-
         when(service.clientEntitlementToCustomerEntitlement(clientEntitlement)).thenReturn(customerEntitlement);
         var response = controller.clientEntitlementToCustomerEntitlement(clientEntitlement);
         assertThat(response).isInstanceOf(CustomerEntitlements.class);

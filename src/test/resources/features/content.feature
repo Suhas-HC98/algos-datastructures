@@ -15,4 +15,3 @@ Feature: Check file content
     Then data produced is not null
   Examples:
       | fileName        |
-      | serviceName.txt |

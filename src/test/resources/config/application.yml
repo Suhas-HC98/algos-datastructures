@@ -1,5 +1,6 @@
+---
 server:
-  port: 8443
+  port: 8223
   servlet:
     context-path: /shared-services
 spring:
@@ -26,3 +27,10 @@ profile:
   username: suhas
   password: suhas
   role: ADMIN
+
+com:
+  shared:
+    info:
+      url:
+        greet-service: http://localhost:${wiremock.server.port}/graphql
+        json-placeholder: http://localhost:${wiremock.server.port}

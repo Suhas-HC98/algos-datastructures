@@ -168,7 +168,7 @@ public class ArrayManipulations {
 
 
     public int secondSmallestElementInArray(int[] a) {
-        int[] bubbleSortedArray = sorting.bubbleSort(a);
+        int[] bubbleSortedArray = sorting.bubbleSortAsc(a);
         return bubbleSortedArray[1];
     }
 

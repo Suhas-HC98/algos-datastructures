@@ -28,7 +28,7 @@ public class Sorting {
     }
 
     //Ascending order
-    public int[] bubbleSort(int[] a) {
+    public int[] bubbleSortAsc(int[] a) {
         for (int i = 0; i < a.length; i++) {
             for (int j = 0; j < a.length - 1 - i; j++) {
                 if (a[j] > a[j + 1]) {
@@ -42,7 +42,7 @@ public class Sorting {
     }
 
     //Descending order
-    public int[] bubbleSorted(int[] a) {
+    public int[] bubbleSortDesc(int[] a) {
         for (int i = 0; i < a.length; i++) {
             for (int j = 0; j < a.length - 1 - i; j++) {
                 if (a[j] < a[j + 1]) {

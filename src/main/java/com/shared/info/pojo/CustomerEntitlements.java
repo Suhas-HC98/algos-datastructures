@@ -8,6 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class CustomerEntitlements {
+
     private String id;
     private String domicileCountry;
 }

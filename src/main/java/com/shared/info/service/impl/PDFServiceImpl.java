@@ -5,10 +5,9 @@ import com.lowagie.text.pdf.PdfWriter;
 import com.shared.info.enums.FileConstants;
 import com.shared.info.service.PDFService;
 import com.shared.info.service.TextContentParserService;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.servlet.http.HttpServletResponse;
 
 @Service
 public final class PDFServiceImpl implements PDFService {
